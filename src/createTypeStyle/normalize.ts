@@ -7,7 +7,7 @@ import
 
 
 /**
- * Adds the rules from the famous normalize stylesheet
+ * Adds the rules from the [normalize](https://github.com/necolas/normalize.css) stylesheet
  * Optionally, you may include a prefix to namespace
  * all the adjustements
  * 

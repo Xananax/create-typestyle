@@ -1,19 +1,19 @@
 {
-  "name": "createtypestyle",
+  "name": "create-typestyle",
   "description": null,
   "version": "0.0.237",
   "dependencies": {
     "typestyle": "latest",
+    "csx": "latest"
+  },
+  "devDependencies": {
     "react-dom": "latest",
     "react": "latest",
-    "csx": "latest",
+    "react-scripts-ts": "2.8.0",
     "@types/react-dom": "latest",
     "@types/react": "latest",
     "@types/jest": "^20.0.8",
     "@types/node": "^8.0.28"
-  },
-  "devDependencies": {
-    "react-scripts-ts": "2.8.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",

@@ -38,4 +38,5 @@ export const mount =
     }
   ; render(createElement(App), appRoot)
   ; setStylesTarget(styleRoot)
+  ; return true
   }
