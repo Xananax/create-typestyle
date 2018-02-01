@@ -1,6 +1,6 @@
 {
   "name": "create-typestyle",
-  "description": null,
+  "description": "creates a boxed, independent instance of typestyle",
   "version": "0.0.237",
   "dependencies": {
     "typestyle": "latest",

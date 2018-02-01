@@ -1,6 +1,6 @@
 # create-typeStyle
 
-creates an instance of [typestyle](//github.com/typestyle/typestyle), with some additional goodies. This is useful if you need to create typestyles on the fly, or in different context simultaneously.
+creates a boxed, independent instance of [typestyle](//github.com/typestyle/typestyle), with some additional goodies. This is useful if you need to create typestyles on the fly, or in different context simultaneously.
 
 createTypeStyle also embeds [csx](//github.com/typestyle/csx/), so there's no need to add it to your dependencies; it also duplicates some of the basic functionality offered by [cssTips](//github.com/typestyle/csstips/)
 
@@ -45,6 +45,8 @@ mount(App, 'root', 'style')
 ```
 
 You'll find a demo in the `src/demo` directory
+
+Check the code on [codesandbox](https://codesandbox.io/s/pmzol7vnwx)
 
 ## Usage
 
