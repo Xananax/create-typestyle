@@ -1,0 +1,24 @@
+{
+  "name": "createtypestyle",
+  "description": null,
+  "version": "0.0.237",
+  "dependencies": {
+    "typestyle": "latest",
+    "react-dom": "latest",
+    "react": "latest",
+    "csx": "latest",
+    "@types/react-dom": "latest",
+    "@types/react": "latest",
+    "@types/jest": "^20.0.8",
+    "@types/node": "^8.0.28"
+  },
+  "devDependencies": {
+    "react-scripts-ts": "2.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  }
+}
