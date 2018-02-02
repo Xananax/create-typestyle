@@ -133,7 +133,8 @@ const {
   prepare,
   mount,
   mergeStyles,
-  googleFont
+  googleFont,
+  makeComponent
 } = createTypeStyle()
 ```
 
@@ -184,6 +185,18 @@ Mounts a react app and their styles
 // and the styles in a style element <style id='styles'/>
 const { mount } = createStyle()
 mount(React.createElement,ReactDOM.render)(App,'root','styles')
+```
+
+### makeComponent
+
+Very simple styled component kinda thing.
+
+```js 
+const {makeComponent:setupMakeComponent} = createTypeStyle()
+const makeComponent = setupMakeComponent(React.createElement)
+const El = makeComponent('div',{color:'red'})
+// use it:
+<El>some text</El>
 ```
 
 ### googleFont

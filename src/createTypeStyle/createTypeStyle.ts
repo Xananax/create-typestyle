@@ -5,6 +5,7 @@ import { prepare as _prepare } from './prepare'
 import { googleFont as _googleFont } from './googleFont'
 import { mergeStyles as _mergeStyles } from './mergeStyles'
 import { mount as _mount } from './mount'
+import { makeComponent as _makeComponent } from './makeComponent'
 
 export * from 'csx'
 export * from 'typestyle'
@@ -30,6 +31,7 @@ export const createTypeStyle =
   ; const mergeStyles = _mergeStyles(style)
   ; const googleFont = _googleFont(cssRaw)
   ; const mount = _mount(setStylesTarget)
+  ; const makeComponent = _makeComponent(style)
   ; const ret = 
     { cssRule
     , cssRaw
@@ -42,6 +44,7 @@ export const createTypeStyle =
     , prepare
     , mount
     , mergeStyles
+    , makeComponent
     , googleFont
     }
   ; return ret

@@ -1,14 +1,5 @@
 import { Renderer } from 'react-dom';
-
-
-export type ValidRootElement = 
-  | string 
-  | React.StatelessComponent<React.DOMAttributes<never>>
-  | React.ComponentClass<React.DOMAttributes<never>>
-
-interface ElementCreator
-  { (el: ValidRootElement): React.ReactElement<any>
-  }
+import { ElementCreator, ValidRootElement } from './types'
 
 /**
  * Mounts a react app and their styles

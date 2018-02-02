@@ -18,12 +18,14 @@ const
   , mergeStyles
   , googleFont
   , mount:setupMount
+  , makeComponent:setupMakeComponent
   } = createTypeStyle()
 
 import * as React from 'react'
 import { render } from 'react-dom'
 
 const mount = setupMount(React.createElement, render)
+const makeComponent = setupMakeComponent(React.createElement)
 
 prepare
   ( 'root'
@@ -127,5 +129,6 @@ export
   , rem
   , em
   , media
+  , makeComponent
   , percent
   }
