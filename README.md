@@ -113,10 +113,36 @@ import {
 
 For regular typestyle functions, check out the [official doc](https://typestyle.github.io/).
 
+All of them are included as methods of the object returned by `createTypeStyle()`.
+
+The complete list of methods:
+
+```js
+const {
+  // regular typestyle methods:
+  cssRule
+  cssRaw
+  style
+  keyframes
+  getStyles
+  setStylesTarget
+  // additional (taken from cssTips):
+  setupPage
+  normalize
+  // create-typestyle exclusive:
+  prepare
+  mount
+  mergeStyles
+  googleFont
+} = createTypeStyle()
+```
+
+
 `create-typestyle` specific methods include:
 
+### setupPage
 
-### setupPage(selector: string, style?: {}) => true
+`(selector: string, style?: {}) => true`
 
 Recommended Page setup, taken straight from [cssTips](//github.com/typestyle/csstips/)
 
@@ -131,7 +157,9 @@ var { setupPage } = createStyle();
 setupPage('root',{fontSize:'10px'})
 ```
 
-### normalize(prefix?:string) => true
+### normalize
+
+`(prefix?:string) => true`
 
 Adds the rules from the [normalize](https://github.com/necolas/normalize.css) stylesheet
 Optionally, you may include a prefix to namespace all the adjustements
@@ -141,7 +169,9 @@ var { normalize } = createStyle();
 normalize('root')
 ```
 
-### prepare(selector: string, style?: {}) => true
+### prepare
+
+`(selector: string, style?: {}) => true`
 
 Just a shortcut to run `setupPage` and `normalize`
 
@@ -156,7 +186,9 @@ const { mount } = createStyle()
 mount(React.createElement,ReactDOM.render)(App,'root','styles')
 ```
 
-### googleFont(font:string)
+### googleFont
+
+`(font:string) => true`
 
 adds an @import rule for a specified google font
 
