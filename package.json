@@ -1,7 +1,18 @@
 {
   "name": "create-typestyle",
-  "description": "creates a boxed, independent instance of typestyle",
   "version": "0.0.237",
+  "description": "creates a boxed, independent instance of typestyle",
+  "license": "MIT",
+  "main": "./dist/main.js",
+  "homepage": "https://github.com/Xananax/create-typestyle/",
+  "author": "xananax@yelostudio.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xananax/create-typestyle/"
+  },
+  "bugs": {
+    "url": "https://github.com/Xananax/create-typestyle/issues"
+  },  
   "dependencies": {
     "typestyle": "latest",
     "csx": "latest"
@@ -19,6 +30,15 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
-  }
+    "eject": "react-scripts-ts eject",
+    "compile": "tsc --moduleResolution Node --module commonjs --target es5 --outDir dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build" 
+  },
+  "keywords": [
+    "typescript",
+    "typestyle",
+    "css",
+    "style"
+  ]
 }
