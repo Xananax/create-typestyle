@@ -120,19 +120,19 @@ The complete list of methods:
 ```js
 const {
   // regular typestyle methods:
-  cssRule
-  cssRaw
-  style
-  keyframes
-  getStyles
-  setStylesTarget
+  cssRule,
+  cssRaw,
+  style,
+  keyframes,
+  getStyles,
+  setStylesTarget,
   // additional (taken from cssTips):
-  setupPage
-  normalize
+  setupPage,
+  normalize,
   // create-typestyle exclusive:
-  prepare
-  mount
-  mergeStyles
+  prepare,
+  mount,
+  mergeStyles,
   googleFont
 } = createTypeStyle()
 ```
