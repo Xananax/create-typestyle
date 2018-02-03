@@ -189,12 +189,14 @@ mount(React.createElement,ReactDOM.render)(App,'root','styles')
 
 ### makeComponent
 
+`createElement:Fn => tagName:string => style:object => Component`
+
 Very simple styled component kinda thing.
 
 ```js 
 const {makeComponent:setupMakeComponent} = createTypeStyle()
 const makeComponent = setupMakeComponent(React.createElement)
-const El = makeComponent('div',{color:'red'})
+const El = makeComponent('div')({color:'red'})
 // use it:
 <El>some text</El>
 ```

@@ -9,7 +9,7 @@ const is_dev = (typeof process !== 'undefined') && process.env && process.env.NO
  * ```js 
  * const {makeComponent:setupMakeComponent} = createTypeStyle()
  * const makeComponent = setupMakeComponent(React.createElement)
- * const El = makeComponent('div',{color:'red'})
+ * const El = makeComponent('div')({color:'red'})
  * // use it:
  * <El>some text</El>
  * ```
@@ -17,7 +17,8 @@ const is_dev = (typeof process !== 'undefined') && process.env && process.env.NO
 export const makeComponent = 
   ( style: (...objects: (types.NestedCSSProperties | undefined | null | false)[]) => string ) =>
   ( createElement:ElementCreator) =>
-  ( tagName: string, mainStyle:types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
+  ( tagName: string ) => 
+  ( mainStyle:types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
   { 
   ; const {$debugName, ...css1} = mainStyle
   ; const className = is_dev ? style({$debugName},css1,...styles) : style(css1,...styles)

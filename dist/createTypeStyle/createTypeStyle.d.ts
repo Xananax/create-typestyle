@@ -23,7 +23,7 @@ export declare const createTypeStyle: () => {
     prepare: (rootSelector: string, additionalStyle?: types.NestedCSSProperties | undefined) => boolean;
     mount: (createElement: ElementCreator, render: ReactDOM.Renderer) => (App: string | React.StatelessComponent<React.DOMAttributes<never>> | React.ComponentClass<React.DOMAttributes<never>>, root_id: string, style_id: string) => boolean;
     mergeStyles: (original: types.NestedCSSProperties | types.NestedCSSProperties[], additional: types.NestedCSSProperties | types.NestedCSSProperties[]) => string | null;
-    makeComponent: (createElement: ElementCreator) => (tagName: string, mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[]) => (props: any) => React.ReactElement<any>;
+    makeComponent: (createElement: ElementCreator) => (tagName: string) => (mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[]) => (props: any) => React.ReactElement<any>;
     googleFont: (font: string) => boolean;
 };
 export default createTypeStyle;

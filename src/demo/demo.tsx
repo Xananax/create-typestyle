@@ -11,7 +11,7 @@ const className = style
     }
   )
 
-const Red = makeComponent('h1', { color: 'red' })
+const Red = makeComponent('h1')({ color: 'red' })
 
 export const App = () =>
   (<div className={className}>

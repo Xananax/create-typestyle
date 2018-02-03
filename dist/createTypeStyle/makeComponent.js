@@ -16,26 +16,28 @@ var is_dev = (typeof process !== 'undefined') && process.env && process.env.NODE
  * ```js
  * const {makeComponent:setupMakeComponent} = createTypeStyle()
  * const makeComponent = setupMakeComponent(React.createElement)
- * const El = makeComponent('div',{color:'red'})
+ * const El = makeComponent('div')({color:'red'})
  * // use it:
  * <El>some text</El>
  * ```
  */
 exports.makeComponent = function (style) {
     return function (createElement) {
-        return function (tagName, mainStyle) {
-            var styles = [];
-            for (var _i = 2; _i < arguments.length; _i++) {
-                styles[_i - 2] = arguments[_i];
-            }
-            ;
-            var $debugName = mainStyle.$debugName, css1 = __rest(mainStyle, ["$debugName"]);
-            var className = is_dev ? style.apply(void 0, [{ $debugName: $debugName }, css1].concat(styles)) : style.apply(void 0, [css1].concat(styles));
-            var el = function (props) {
-                var children = props && props.children ? props.children : null;
-                return createElement.apply(void 0, [tagName, { className: className }].concat(children));
+        return function (tagName) {
+            return function (mainStyle) {
+                var styles = [];
+                for (var _i = 1; _i < arguments.length; _i++) {
+                    styles[_i - 1] = arguments[_i];
+                }
+                ;
+                var $debugName = mainStyle.$debugName, css1 = __rest(mainStyle, ["$debugName"]);
+                var className = is_dev ? style.apply(void 0, [{ $debugName: $debugName }, css1].concat(styles)) : style.apply(void 0, [css1].concat(styles));
+                var el = function (props) {
+                    var children = props && props.children ? props.children : null;
+                    return createElement.apply(void 0, [tagName, { className: className }].concat(children));
+                };
+                return el;
             };
-            return el;
         };
     };
 };
