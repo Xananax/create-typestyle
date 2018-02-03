@@ -4,6 +4,8 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 var typestyle_1 = require("typestyle");
+exports.types = typestyle_1.types;
+var typestyle_2 = require("typestyle");
 var setupPage_1 = require("./setupPage");
 var normalize_1 = require("./normalize");
 var prepare_1 = require("./prepare");
@@ -19,7 +21,7 @@ __export(require("typestyle"));
  */
 exports.createTypeStyle = function () {
     ;
-    var _a = typestyle_1.createTypeStyle(), cssRule = _a.cssRule, cssRaw = _a.cssRaw, style = _a.style, keyframes = _a.keyframes, getStyles = _a.getStyles, setStylesTarget = _a.setStylesTarget;
+    var _a = typestyle_2.createTypeStyle(), cssRule = _a.cssRule, cssRaw = _a.cssRaw, style = _a.style, keyframes = _a.keyframes, getStyles = _a.getStyles, setStylesTarget = _a.setStylesTarget;
     var setupPage = setupPage_1.setupPage(cssRule);
     var normalize = normalize_1.normalize(cssRule);
     var prepare = prepare_1.prepare(cssRule);

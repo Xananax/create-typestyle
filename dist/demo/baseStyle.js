@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var typestyle_1 = require("typestyle");
+exports.types = typestyle_1.types;
 var createTypeStyle_1 = require("../createTypeStyle");
 exports.px = createTypeStyle_1.px;
 exports.em = createTypeStyle_1.em;

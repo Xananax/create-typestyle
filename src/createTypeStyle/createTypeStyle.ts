@@ -1,3 +1,7 @@
+import { ElementCreator } from './types'
+export { ElementCreator }
+import { types } from 'typestyle'
+export { types }
 import { createTypeStyle as _createTypeStyle } from 'typestyle'
 import { setupPage as _setupPage } from './setupPage'
 import { normalize as _normalize } from './normalize'

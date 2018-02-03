@@ -1,3 +1,5 @@
+import { types } from 'typestyle'
+export { types }
 import 
   { createTypeStyle
   , px

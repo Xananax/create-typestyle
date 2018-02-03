@@ -1,3 +1,5 @@
+import { types } from 'typestyle'
+export { types }
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { createTypeStyle, px, deg, em } from '../createTypeStyle'
