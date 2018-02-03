@@ -4,6 +4,7 @@
   "description": "creates a boxed, independent instance of typestyle",
   "license": "MIT",
   "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
   "homepage": "https://github.com/Xananax/create-typestyle/",
   "author": "xananax@yelostudio.com",
   "repository": {
