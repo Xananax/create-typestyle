@@ -12,7 +12,7 @@
   },
   "bugs": {
     "url": "https://github.com/Xananax/create-typestyle/issues"
-  },  
+  },
   "dependencies": {
     "typestyle": "latest",
     "csx": "latest"
@@ -33,7 +33,7 @@
     "eject": "react-scripts-ts eject",
     "compile": "tsc --moduleResolution Node --module commonjs --target es5 --outDir dist",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build" 
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "typescript",

@@ -17,7 +17,7 @@ import
  * ```
  */
 export const normalize =
-  ( cssRule: (selector: string, ...objects: types.NestedCSSProperties[])=>void) =>
+  ( cssRule: (selector: string, ...objects: (types.NestedCSSProperties & {'-webkit-textDecoration-skip'?:string})[])=>void) =>
   ( prefix: string = '' ) => 
   {
   ; const p = prefix ? prefix.trim() + ' ' : '';

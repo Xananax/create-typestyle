@@ -1,1 +1,1 @@
-export * from './createStyle'
+export * from './createTypeStyle'

@@ -1,0 +1,1 @@
+{"version":3,"file":"prepare.js","sourceRoot":"","sources":["../../../src/createTypeStyle/prepare.ts"],"names":[],"mappings":";;AACA,yCAAuC;AACvC,yCAAuC;AAEvC;;;;;;;;;GASG;AACU,QAAA,OAAO,GAClB,UAAE,OAA4E;IAC9E,OAAA,UAAE,YAAoB,EACpB,eAA2C;QAE7C,OAAA,CAAE,qBAAS,CAAC,OAAO,CAAC,EAAE,IAAI,qBAAS,CAAC,OAAO,CAAC,CAAC,YAAY,EAAE,eAAe,CAAC,CAC1E;IADD,CACC;AAJD,CAIC,CAAA"}
