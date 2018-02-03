@@ -1,4 +1,4 @@
-import { types } from 'typestyle'
+import { types, classes } from 'typestyle'
 import { ElementCreator } from './types'
 
 const is_dev = (typeof process !== 'undefined') && process.env && process.env.NODE_ENV !== 'production'
@@ -21,10 +21,13 @@ export const makeComponent =
   ( mainStyle:types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
   { 
   ; const {$debugName, ...css1} = mainStyle
-  ; const className = is_dev ? style({$debugName},css1,...styles) : style(css1,...styles)
-  ; const el  = (props:any) => 
-    { const children = props && props.children? props.children : null
-    ; return createElement(tagName,{className},...children)
+  ; const _className = is_dev ? style({$debugName},css1,...styles) : style(css1,...styles)
+  ; const el  = (props:any = {}) => 
+    { const { children:potentialChildren, className:additionalClassName,...restProps } = props
+    ; const className = additionalClassName ? classes(_className,additionalClassName) : _className
+    ; const finalProps = { ...restProps, className }
+    ; const children = potentialChildren || null
+    ; return createElement( tagName, finalProps, ...children )
     }
   ; return el
   } 
