@@ -46,7 +46,7 @@ mount(App, 'root', 'style')
 
 You'll find a demo in the `src/demo` directory
 
-Check the code on [codesandbox](https://codesandbox.io/s/pmzol7vnwx)
+Check a live demo on [codesandbox](https://codesandbox.io/s/x9w5z3jkvp)
 
 ## Usage
 
