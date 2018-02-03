@@ -11,6 +11,7 @@ exports.App = function () {
         React.createElement(Red, null,
             "Start editing to see some magic happen ",
             "\u2728"),
+        React.createElement(Red, null),
         React.createElement("p", null, "In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Replacing meaningful content with placeholder text allows designers to design the form of the content before the content itself has been produced.")));
 };
 baseStyle_1.mount(exports.App, 'root', 'style');

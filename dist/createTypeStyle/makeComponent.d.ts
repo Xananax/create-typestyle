@@ -12,4 +12,4 @@ import { ElementCreator } from './types';
  * <El>some text</El>
  * ```
  */
-export declare const makeComponent: (style: (...objects: (false | types.NestedCSSProperties | null | undefined)[]) => string) => (createElement: ElementCreator) => (tagName: string) => (mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[]) => (props: any) => React.ReactElement<any>;
+export declare const makeComponent: (style: (...objects: (false | types.NestedCSSProperties | null | undefined)[]) => string) => (createElement: ElementCreator) => (tagName: string) => (mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[]) => (props?: any) => React.ReactElement<any>;
