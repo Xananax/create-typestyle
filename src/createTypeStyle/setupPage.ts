@@ -1,7 +1,6 @@
 import { types } from 'typestyle'
 import { percent } from 'csx'
 
-
 /**
  * Recommended Page setup
  * - Sets up the body to be full size

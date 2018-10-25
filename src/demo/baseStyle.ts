@@ -25,12 +25,11 @@ const
   , makeComponent
   } = createTypeStyle(React.createElement)
 
-
 const mount = setupMount(render)
 
 prepare
   ( 'root'
-  , { fontSize:px(10)
+  , { fontSize: px(10)
     }
   )
 
@@ -41,7 +40,7 @@ cssRaw
   (`h1{font-size:10px}`);
 
 cssRule
-  ('body',{width:`100%`})
+  ('body', { width: `100%` })
 
 cssRule
   ( 'h1,h2,h3,h4,h5,h6'

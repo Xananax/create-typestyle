@@ -5,6 +5,14 @@ import
   , percent
   } from 'csx'
 
+export type VendorCSSProperties = 
+  { '-ms-text-size-adjust'?: string | number | types.TLength[]
+  , '-webkit-text-size-adjust'?: string | number | types.TLength[]
+  , '-webkit-textDecoration-skip'?: string
+  }
+
+export type ExtendedNestedCSSProperties = 
+  types.NestedCSSProperties & VendorCSSProperties 
 
 /**
  * Adds the rules from the [normalize](https://github.com/necolas/normalize.css) stylesheet
@@ -13,11 +21,11 @@ import
  * 
  * ```js
  * const { cssRule } = createTypeStyle();
- * normalize(cssRule)('.homepage ')
+ * normalize(cssRule)('.homepage')
  * ```
  */
 export const normalize =
-  ( cssRule: (selector: string, ...objects: (types.NestedCSSProperties & {'-webkit-textDecoration-skip'?:string})[])=>void) =>
+  ( cssRule: ( selector: string, ...objects: ExtendedNestedCSSProperties[] ) => void ) =>
   ( prefix: string = '' ) => 
   {
   ; const p = prefix ? prefix.trim() + ' ' : '';
@@ -40,6 +48,7 @@ export const normalize =
       , ...
         { '-ms-text-size-adjust': percent(100)
         , '-webkit-text-size-adjust': percent(100)
+         /* tslint:disable:no-any */
         } as any
       }
     )
@@ -156,13 +165,21 @@ export const normalize =
     , { '-webkit-appearance': `button` }
     )
   ; cssRule
-    ( `${p}[type=button]::-moz-focus-inner,${p}[type=reset]::-moz-focus-inner,${p}[type=submit]::-moz-focus-inner,${p}button::-moz-focus-inner`
+    ( [ `${p}[type=button]::-moz-focus-inner`
+      , `${p}[type=reset]::-moz-focus-inner`
+      , `${p}[type=submit]::-moz-focus-inner`
+      , `${p}button::-moz-focus-inner`
+      ].join(',')
     , { borderStyle: `none`
       , padding: 0
       }
     )
   ; cssRule
-    ( `${p}[type=button]:-moz-focusring,${p}[type=reset]:-moz-focusring,${p}[type=submit]:-moz-focusring,${p}button:-moz-focusring`
+    ( [ `${p}[type=button]:-moz-focusring`
+      , `${p}[type=reset]:-moz-focusring`
+      , `${p}[type=submit]:-moz-focusring`
+      , `${p}button:-moz-focusring`
+      ].join(',')
     , { outline: `ButtonText dotted ${px(1)}` }
     )
   ; cssRule

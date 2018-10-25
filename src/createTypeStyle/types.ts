@@ -4,5 +4,6 @@ export type ValidRootElement =
   | React.ComponentClass<React.DOMAttributes<never>>
 
 export interface ElementCreator
-  { (el: ValidRootElement,props?:any,...children:any[]): React.ReactElement<any>
+  /*tslint:disable:no-any*/
+  { (el: ValidRootElement, props?: any, ...children: any[] ): React.ReactElement<any>
   }

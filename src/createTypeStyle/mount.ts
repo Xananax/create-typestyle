@@ -13,19 +13,19 @@ export const mount =
   ( createElement: ElementCreator
   , setStylesTarget: ( tag: { textContent: string | null } ) => void
   ) =>
-  ( render:Renderer ) =>
+  ( render: Renderer ) =>
   ( App: ValidRootElement
-  , root_id: string
-  , style_id: string
+  , rootId: string
+  , styleId: string
   ) => 
   {
-  ; const appRoot = document.getElementById(root_id)
-  ; const styleRoot = document.getElementById(style_id)
+  ; const appRoot = document.getElementById(rootId)
+  ; const styleRoot = document.getElementById(styleId)
   ; if (!appRoot) 
-    { throw new Error(`root element ${root_id} not found`)
+    { throw new Error(`root element ${rootId} not found`)
     }
   ; if (!styleRoot)
-    { throw new Error(`style element ${style_id} not found`)
+    { throw new Error(`style element ${styleId} not found`)
     }
   ; render(createElement(App), appRoot)
   ; setStylesTarget(styleRoot)
