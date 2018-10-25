@@ -1,6 +1,10 @@
 /// <reference types="react" />
 import { types } from 'typestyle';
 import { ElementCreator } from './types';
+export declare const isDev: boolean;
+export declare const snakeToCamel: (s: string) => string;
+export declare const upperCase: (s: string) => string;
+export declare const snakeToReactName: (s: string) => string;
 /**
  * Very simple styled component kinda thing.
  *

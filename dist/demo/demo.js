@@ -4,7 +4,7 @@ var baseStyle_1 = require("./baseStyle");
 var appClassName = baseStyle_1.style({ $debugName: "App",
     textAlign: "center"
 });
-var Red = baseStyle_1.makeComponent('h1')({ color: 'red' });
+var Red = baseStyle_1.makeComponent('h1')({ $debugName: 'red-element', color: 'red' });
 exports.App = function () {
     return (baseStyle_1.React.createElement("div", { className: appClassName },
         baseStyle_1.React.createElement(Red, null,
