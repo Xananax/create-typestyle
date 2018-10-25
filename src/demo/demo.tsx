@@ -11,7 +11,7 @@ const appClassName = style
     }
   )
 
-const Red = makeComponent('h1')({ color: 'red' })
+const Red = makeComponent('h1')({ $debugName: 'red-element', color: 'red' })
 
 export const App = () =>
   ( 

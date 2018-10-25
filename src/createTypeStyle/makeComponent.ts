@@ -1,7 +1,24 @@
 import { types, classes } from 'typestyle'
 import { ElementCreator } from './types'
 
-const isDev = (typeof process !== 'undefined') && process.env && process.env.NODE_ENV !== 'production'
+export const isDev = (typeof process !== 'undefined') && process.env && process.env.NODE_ENV !== 'production'
+
+export const snakeToCamel = 
+  ( s: string ) =>
+  ( s.replace
+      ( /(\-\w)/g
+      , (m) => m[1].toUpperCase()
+      )
+  )
+
+export const upperCase =
+  ( s: string ) =>
+  ( s[0].toUpperCase() + s.slice(1)
+  )
+
+export const snakeToReactName =
+  ( s: string ) =>
+  ( upperCase(snakeToCamel(s)) )
 
 /**
  * Very simple styled component kinda thing.
@@ -25,7 +42,7 @@ export const makeComponent =
   ; const { $debugName, ...css } = mainStyle
   ; const _className = isDev ? style({ $debugName }, css, ...styles) : style(css, ...styles)
   /* tslint:disable:no-any */
-  ; const el  = (props: any = {}) => 
+  ; const StyledElement  = (props: any = {}) => 
     { const 
       { children: potentialChildren
       , className: additionalClassName
@@ -39,5 +56,8 @@ export const makeComponent =
     ; const children = potentialChildren || null
     ; return createElement( tagName, finalProps, ...children )
     }
-  ; return el
+  ; if ( isDev && $debugName )
+    { return Object.assign(StyledElement, { displayName: snakeToReactName($debugName) })
+    }
+  ; return StyledElement
   } 
