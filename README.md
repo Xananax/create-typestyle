@@ -203,7 +203,7 @@ googleFont('Montserrat:600|Lora:400');
 ### mount
 
 ```typescript
-(render) => (ReactElement,root_id,style_id) => true
+(render:Function) => (ReactElement,root_id,style_id) => true
 ```
 
 Mounts a react app and their styles
@@ -221,7 +221,7 @@ mount(ReactDOM.render)(App,'root','styles');
 ### makeComponent
 
 ```typescript
-(createElement:Function) => (tagName:string) => (style:object) => Component
+(tagName:string) => (style:object) => Component
 ```
 
 Very simple styled component kinda thing.
