@@ -5,11 +5,12 @@ import { ElementCreator } from './types';
  * Very simple styled component kinda thing.
  *
  * ```js
- * const {makeComponent:setupMakeComponent} = createTypeStyle()
- * const makeComponent = setupMakeComponent(React.createElement)
- * const El = makeComponent('div')({color:'red'})
+ * const {style} = createTypeStyle()
+ * const make = makeComponent(React.createElement,style)
+ * const Div = make('div')
+ * const Red = Div({color:'red'})
  * // use it:
- * <El>some text</El>
+ * <Red>some text</Red>
  * ```
  */
-export declare const makeComponent: (style: (...objects: (false | types.NestedCSSProperties | null | undefined)[]) => string) => (createElement: ElementCreator) => (tagName: string) => (mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[]) => (props?: any) => React.ReactElement<any>;
+export declare const makeComponent: (createElement: ElementCreator, style: (...objects: (false | types.NestedCSSProperties | null | undefined)[]) => string) => (tagName: string) => (mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[]) => (props?: any) => import("react").ReactElement<any>;

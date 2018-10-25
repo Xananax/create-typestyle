@@ -5,9 +5,9 @@ import { ElementCreator, ValidRootElement } from './types';
  *
  * ```js
  * const { setStylesTarget } = createStyle()
- * mount(setStylesTarget)(React.createElement,ReactDOM.render)(App,'root','styles')
+ * mount(React.createElement,setStyleTarget)(ReactDOM.render)(App,'root','styles')
  * ```
  */
-export declare const mount: (setStylesTarget: (tag: {
+export declare const mount: (createElement: ElementCreator, setStylesTarget: (tag: {
     textContent: string | null;
-}) => void) => (createElement: ElementCreator, render: Renderer) => (App: ValidRootElement, root_id: string, style_id: string) => boolean;
+}) => void) => (render: Renderer) => (App: ValidRootElement, rootId: string, styleId: string) => boolean;

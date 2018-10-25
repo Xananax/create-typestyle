@@ -1,11 +1,14 @@
 "use strict";
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var csx_1 = require("csx");
@@ -17,7 +20,7 @@ var csx_1 = require("csx");
  * @param additionalStyle any additional global style you want to apply (e.g, fonts)
  *
  * ```js
- * var { cssRule } = createStyle();
+ * var { cssRule } = createTypeStyle();
  * setupPage(cssRule)('root',{fontSize:'10px'})
  * ```
  */

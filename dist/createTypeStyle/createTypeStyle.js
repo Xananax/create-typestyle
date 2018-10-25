@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
@@ -15,11 +26,7 @@ var mount_1 = require("./mount");
 var makeComponent_1 = require("./makeComponent");
 __export(require("csx"));
 __export(require("typestyle"));
-/**
- * Creates a typestyle instance
- * as well as a few utility functions
- */
-exports.createTypeStyle = function () {
+exports.createTypeStyleInstance = function () {
     ;
     var _a = typestyle_2.createTypeStyle(), cssRule = _a.cssRule, cssRaw = _a.cssRaw, style = _a.style, keyframes = _a.keyframes, getStyles = _a.getStyles, setStylesTarget = _a.setStylesTarget;
     var setupPage = setupPage_1.setupPage(cssRule);
@@ -27,8 +34,6 @@ exports.createTypeStyle = function () {
     var prepare = prepare_1.prepare(cssRule);
     var mergeStyles = mergeStyles_1.mergeStyles(style);
     var googleFont = googleFont_1.googleFont(cssRaw);
-    var mount = mount_1.mount(setStylesTarget);
-    var makeComponent = makeComponent_1.makeComponent(style);
     var ret = { cssRule: cssRule,
         cssRaw: cssRaw,
         style: style,
@@ -38,12 +43,28 @@ exports.createTypeStyle = function () {
         setupPage: setupPage,
         normalize: normalize,
         prepare: prepare,
-        mount: mount,
         mergeStyles: mergeStyles,
-        makeComponent: makeComponent,
         googleFont: googleFont
     };
     return ret;
 };
-exports.default = exports.createTypeStyle;
+exports.createTypeStyleInstanceWithDomHelpers = function (createElement) {
+    var props = exports.createTypeStyleInstance();
+    var setStylesTarget = props.setStylesTarget, style = props.style;
+    var setupMount = mount_1.mount(createElement, setStylesTarget);
+    var makeComponent = makeComponent_1.makeComponent(createElement, style);
+    var ret = __assign({}, props, { setupMount: setupMount,
+        makeComponent: makeComponent });
+    return ret;
+};
+function createTypeStyle(createElement) {
+    ;
+    if (createElement) {
+        return exports.createTypeStyleInstanceWithDomHelpers(createElement);
+    }
+    ;
+    return exports.createTypeStyleInstance();
+}
+exports.createTypeStyle = createTypeStyle;
+exports.default = createTypeStyle;
 //# sourceMappingURL=createTypeStyle.js.map

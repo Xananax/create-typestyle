@@ -5,10 +5,10 @@ exports.types = typestyle_1.types;
 var React = require("react");
 var ReactDOM = require("react-dom");
 var createTypeStyle_1 = require("../createTypeStyle");
-var _a = createTypeStyle_1.createTypeStyle(), style = _a.style, keyframes = _a.keyframes, setupMakeComponent = _a.makeComponent, setupMount = _a.mount;
+var _a = createTypeStyle_1.createTypeStyle(React.createElement), style = _a.style, keyframes = _a.keyframes, makeComponent = _a.makeComponent, setupMount = _a.setupMount;
 exports.style = style;
-exports.mount = setupMount(React.createElement, ReactDOM.render);
-exports.makeComponent = setupMakeComponent(React.createElement);
+exports.makeComponent = makeComponent;
+exports.mount = setupMount(ReactDOM.render);
 exports.appClassName = style({
     textAlign: "center"
 });

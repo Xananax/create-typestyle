@@ -5,21 +5,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *
  * ```js
  * const { setStylesTarget } = createStyle()
- * mount(setStylesTarget)(React.createElement,ReactDOM.render)(App,'root','styles')
+ * mount(React.createElement,setStyleTarget)(ReactDOM.render)(App,'root','styles')
  * ```
  */
-exports.mount = function (setStylesTarget) {
-    return function (createElement, render) {
-        return function (App, root_id, style_id) {
+exports.mount = function (createElement, setStylesTarget) {
+    return function (render) {
+        return function (App, rootId, styleId) {
             ;
-            var appRoot = document.getElementById(root_id);
-            var styleRoot = document.getElementById(style_id);
+            var appRoot = document.getElementById(rootId);
+            var styleRoot = document.getElementById(styleId);
             if (!appRoot) {
-                throw new Error("root element " + root_id + " not found");
+                throw new Error("root element " + rootId + " not found");
             }
             ;
             if (!styleRoot) {
-                throw new Error("style element " + style_id + " not found");
+                throw new Error("style element " + styleId + " not found");
             }
             ;
             render(createElement(App), appRoot);

@@ -1,14 +1,25 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var csx_1 = require("csx");
 /**
  * Adds the rules from the [normalize](https://github.com/necolas/normalize.css) stylesheet
  * Optionally, you may include a prefix to namespace
- * all the adjustements
+ * all the adjustments
  *
  * ```js
- * var { cssRule } = createStyle();
- * normalize(cssRule)()
+ * const { cssRule } = createTypeStyle();
+ * normalize(cssRule)('.homepage')
  * ```
  */
 exports.normalize = function (cssRule) {
@@ -20,11 +31,10 @@ exports.normalize = function (cssRule) {
         cssRule(p + "button," + p + "hr," + p + "input", { overflow: "visible" });
         cssRule(p + "audio," + p + "canvas," + p + "progress," + p + "video", { display: "inline-block" });
         cssRule(p + "progress," + p + "sub," + p + "sup", { verticalAlign: "baseline" });
-        cssRule(p + "html", { fontFamily: "sans-serif",
-            lineHeight: 1.15,
-            '-ms-text-size-adjust': csx_1.percent(100),
+        cssRule(p + "html", __assign({ fontFamily: "sans-serif", lineHeight: 1.15 }, { '-ms-text-size-adjust': csx_1.percent(100),
             '-webkit-text-size-adjust': csx_1.percent(100)
-        });
+            /* tslint:disable:no-any */
+        }));
         cssRule(p + "body", { margin: 0 });
         cssRule(p + "menu," + p + "article," + p + "aside," + p + "details," + p + "footer," + p + "header," + p + "nav," + p + "section", { display: "block" });
         cssRule(p + "h1", { fontSize: csx_1.em(2), margin: csx_1.em(.67) + " 0" });
@@ -65,10 +75,18 @@ exports.normalize = function (cssRule) {
         cssRule(p + "button," + p + "input", {});
         cssRule(p + "button," + p + "select", { textTransform: "none" });
         cssRule(p + "[type=submit]," + p + "[type=reset]," + p + "button," + p + "html[type=button]", { '-webkit-appearance': "button" });
-        cssRule(p + "[type=button]::-moz-focus-inner," + p + "[type=reset]::-moz-focus-inner," + p + "[type=submit]::-moz-focus-inner," + p + "button::-moz-focus-inner", { borderStyle: "none",
+        cssRule([p + "[type=button]::-moz-focus-inner",
+            p + "[type=reset]::-moz-focus-inner",
+            p + "[type=submit]::-moz-focus-inner",
+            p + "button::-moz-focus-inner"
+        ].join(','), { borderStyle: "none",
             padding: 0
         });
-        cssRule(p + "[type=button]:-moz-focusring," + p + "[type=reset]:-moz-focusring," + p + "[type=submit]:-moz-focusring," + p + "button:-moz-focusring", { outline: "ButtonText dotted " + csx_1.px(1) });
+        cssRule([p + "[type=button]:-moz-focusring",
+            p + "[type=reset]:-moz-focusring",
+            p + "[type=submit]:-moz-focusring",
+            p + "button:-moz-focusring"
+        ].join(','), { outline: "ButtonText dotted " + csx_1.px(1) });
         cssRule(p + "fieldset", { border: csx_1.px(1) + " solid silver",
             margin: "0 " + csx_1.px(2),
             padding: csx_1.em(.35) + " " + csx_1.em(.625) + " " + csx_1.em(.75)
