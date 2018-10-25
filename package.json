@@ -15,17 +15,17 @@
     "url": "https://github.com/Xananax/create-typestyle/issues"
   },
   "dependencies": {
-    "typestyle": "latest",
-    "csx": "latest"
+    "csx": "^9.0.0",
+    "typestyle": "^2.0.1"
   },
   "devDependencies": {
-    "react-dom": "latest",
-    "react": "latest",
-    "react-scripts-ts": "2.8.0",
-    "@types/react-dom": "latest",
-    "@types/react": "latest",
-    "@types/jest": "^20.0.8",
-    "@types/node": "^8.0.28"
+    "@types/jest": "^23.3.7",
+    "@types/node": "^10.12.0",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts-ts": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
