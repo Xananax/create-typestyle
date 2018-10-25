@@ -236,6 +236,8 @@ const El = Div({color:'red'})
 <El>some text</El>
 ```
 
+note: calling `makeComponent("div")` a second time will return the same instance, so there's no need for an intermediary variable
+
 ## License
 
 MIT

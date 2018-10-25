@@ -20,6 +20,13 @@ export const snakeToReactName =
   ( s: string ) =>
   ( upperCase(snakeToCamel(s)) )
 
+const cache: 
+  { [ key: string ]: 
+    ( mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
+    /* tslint:disable:no-any */
+    ( props?: any) => React.ReactElement<any>
+  } = {}
+
 /**
  * Very simple styled component kinda thing.
  * 
@@ -37,27 +44,33 @@ export const makeComponent =
   , style: (...objects: (types.NestedCSSProperties | undefined | null | false)[]) => string
   ) =>
   ( tagName: string ) => 
-  ( mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
   { 
-  ; const { $debugName, ...css } = mainStyle
-  ; const _className = isDev ? style({ $debugName }, css, ...styles) : style(css, ...styles)
-  /* tslint:disable:no-any */
-  ; const StyledElement  = (props: any = {}) => 
-    { const 
-      { children: potentialChildren
-      , className: additionalClassName
-      , ...restProps 
-      } = props
-    ; const className = additionalClassName ? classes( _className, additionalClassName ) : _className
-    ; const finalProps = 
-      { ...restProps
-      , className
+  ; if ( !cache[tagName] )
+    { cache[tagName] =
+      ( mainStyle: types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
+      { 
+      ; const { $debugName, ...css } = mainStyle
+      ; const _className = isDev ? style({ $debugName }, css, ...styles) : style(css, ...styles)
+      /* tslint:disable:no-any */
+      ; const StyledElement  = (props: any = {}) => 
+        { const 
+          { children: potentialChildren
+          , className: additionalClassName
+          , ...restProps 
+          } = props
+        ; const className = additionalClassName ? classes( _className, additionalClassName ) : _className
+        ; const finalProps = 
+          { ...restProps
+          , className
+          }
+        ; const children = potentialChildren || null
+        ; return createElement( tagName, finalProps, ...children )
+        }
+      ; if ( isDev && $debugName )
+        { return Object.assign(StyledElement, { displayName: snakeToReactName($debugName) })
+        }
+      ; return StyledElement
       }
-    ; const children = potentialChildren || null
-    ; return createElement( tagName, finalProps, ...children )
     }
-  ; if ( isDev && $debugName )
-    { return Object.assign(StyledElement, { displayName: snakeToReactName($debugName) })
-    }
-  ; return StyledElement
-  } 
+  ; return cache[tagName]
+  }
