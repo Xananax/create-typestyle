@@ -8,7 +8,7 @@ import { setupPage } from './setupPage'
  * @param additionalStyle any additional global style you want to apply (e.g, fonts)
  * 
  * ```js
- * var { cssRule } = createStyle();
+ * var { cssRule } = createTypeStyle();
  * prepare(cssRule)('root',{fontSize:'10px'})
  * ```
  */

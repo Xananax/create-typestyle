@@ -7,16 +7,18 @@ const is_dev = (typeof process !== 'undefined') && process.env && process.env.NO
  * Very simple styled component kinda thing.
  * 
  * ```js 
- * const {makeComponent:setupMakeComponent} = createTypeStyle()
- * const makeComponent = setupMakeComponent(React.createElement)
- * const El = makeComponent('div')({color:'red'})
+ * const {style} = createTypeStyle()
+ * const make = makeComponent(React.createElement,style)
+ * const Div = make('div')
+ * const Red = Div({color:'red'})
  * // use it:
- * <El>some text</El>
+ * <Red>some text</Red>
  * ```
  */
 export const makeComponent = 
-  ( style: (...objects: (types.NestedCSSProperties | undefined | null | false)[]) => string ) =>
-  ( createElement:ElementCreator) =>
+  ( createElement:ElementCreator
+  , style: (...objects: (types.NestedCSSProperties | undefined | null | false)[]) => string
+  ) =>
   ( tagName: string ) => 
   ( mainStyle:types.NestedCSSProperties, ...styles: types.NestedCSSProperties[] ) =>
   { 

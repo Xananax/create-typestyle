@@ -9,11 +9,11 @@ import
 /**
  * Adds the rules from the [normalize](https://github.com/necolas/normalize.css) stylesheet
  * Optionally, you may include a prefix to namespace
- * all the adjustements
+ * all the adjustments
  * 
  * ```js
- * var { cssRule } = createStyle();
- * normalize(cssRule)()
+ * const { cssRule } = createTypeStyle();
+ * normalize(cssRule)('.homepage ')
  * ```
  */
 export const normalize =
@@ -37,8 +37,10 @@ export const normalize =
     ( `${p}html`
     , { fontFamily: `sans-serif`
       , lineHeight: 1.15
-      , '-ms-text-size-adjust': percent(100)
-      , '-webkit-text-size-adjust': percent(100) 
+      , ...
+        { '-ms-text-size-adjust': percent(100)
+        , '-webkit-text-size-adjust': percent(100)
+        } as any
       }
     )
   ; cssRule

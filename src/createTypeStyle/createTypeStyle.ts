@@ -14,11 +14,23 @@ import { makeComponent as _makeComponent } from './makeComponent'
 export * from 'csx'
 export * from 'typestyle'
 
-/**
- * Creates a typestyle instance
- * as well as a few utility functions
- */
-export const createTypeStyle = 
+export const createTypeStyleInstanceWithDomHelpers =
+  ( createElement:ElementCreator ) => 
+  { const props = createTypeStyleInstance()
+  ; const { setStylesTarget, style } = props
+  ; const setupMount = _mount(createElement, setStylesTarget)
+  ; const makeComponent = _makeComponent(createElement, style)
+  ; const ret =  
+    { ...props
+    , setupMount
+    , makeComponent
+    }
+  ; return ret
+  }
+
+type TypeStyleExtraHelpers = ReturnType<typeof createTypeStyleInstanceWithDomHelpers>
+
+export const createTypeStyleInstance = 
   () => 
   { 
   ; const 
@@ -34,8 +46,6 @@ export const createTypeStyle =
   ; const prepare = _prepare(cssRule)
   ; const mergeStyles = _mergeStyles(style)
   ; const googleFont = _googleFont(cssRaw)
-  ; const mount = _mount(setStylesTarget)
-  ; const makeComponent = _makeComponent(style)
   ; const ret = 
     { cssRule
     , cssRaw
@@ -46,12 +56,23 @@ export const createTypeStyle =
     , setupPage
     , normalize
     , prepare
-    , mount
     , mergeStyles
-    , makeComponent
     , googleFont
     }
   ; return ret
   }
+
+type TypeStyleHelpers = ReturnType<typeof createTypeStyleInstance>
+
+/**
+ * Creates a typestyle instance
+ * as well as a few utility functions
+ */
+export function createTypeStyle():TypeStyleHelpers
+export function createTypeStyle(createElement:ElementCreator):TypeStyleExtraHelpers
+export function createTypeStyle(createElement?:ElementCreator):TypeStyleExtraHelpers|TypeStyleHelpers{
+  if(createElement){ return createTypeStyleInstanceWithDomHelpers(createElement) }
+  return createTypeStyleInstance()
+}
 
 export default createTypeStyle

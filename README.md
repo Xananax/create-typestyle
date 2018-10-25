@@ -4,7 +4,10 @@ creates a boxed, independent instance of [typestyle](//github.com/typestyle/type
 
 createTypeStyle also embeds [csx](//github.com/typestyle/csx/), so there's no need to add it to your dependencies; it also duplicates some of the basic functionality offered by [cssTips](//github.com/typestyle/csstips/)
 
+It makes creating styles and working with both React and Typestyle a little bit nicer, at the price of some boilerplate written once per project
+
 ## Quick Example
+
 
 ```js
 import { createTypeStyle } from '../createtypestyle' 
@@ -17,12 +20,12 @@ const {
   style,
   prepare,
   googleFont, 
-  mount:setupMount
-} = createTypeStyle()
+  setupMount
+} = createTypeStyle(React.createElement) // you can pass also Preact, Inferno, etc 
 
 // creates a function that will serve to 
 // mount the react element and the style later
-const mount = setupMount(React.createElement, render)
+const mount = setupMount(render)
 
 // normalizes and sets best practices for
 // the main style, with optional additional css
@@ -31,10 +34,10 @@ prepare('root', { fontSize:px(10) })
 // adds a google font
 googleFont('Montserrat:600|Lora:400')
 
-const className = style({ textAlign: "center" })
+const appClassName = style({ textAlign: "center" })
 
 export const App = () =>
-  <div className={className}>
+  <div className={appClassName}>
     <h2>Start editing to see some magic happen {"\u2728"}</h2>
   </div>
 
@@ -46,12 +49,12 @@ mount(App, 'root', 'style')
 
 You'll find a demo in the `src/demo` directory
 
-Check a live demo on [codesandbox](https://codesandbox.io/s/x9w5z3jkvp)
+Check a live demo on [codesandbox](https://codesandbox.io/s/jn06wov9vw)
 
 ## Usage
 
 ```bash
-npm install create-typestyle
+npm install --save create-typestyle
 ```
 
 then create a boxed typestyle:
@@ -68,9 +71,10 @@ const {
   setupPage,
   normalize,
   prepare,
-  mount,
   mergeStyles,
-  googleFont
+  googleFont,
+  mount, // only if you pass React.createElement
+  makeComponent // only if you pass React.createElement
 } = createTypeStyle()
 ```
 
@@ -131,9 +135,10 @@ const {
   normalize,
   // create-typestyle exclusive:
   prepare,
-  mount,
   mergeStyles,
   googleFont,
+  // for usage with React/Preact/Inferno and other React-compatible libraries
+  mount,
   makeComponent
 } = createTypeStyle()
 ```
@@ -143,7 +148,9 @@ const {
 
 ### setupPage
 
-`(selector: string, style?: {}) => true`
+```typescript
+(selector: string, style?: {}) => true
+```
 
 Recommended Page setup, taken straight from [cssTips](//github.com/typestyle/csstips/)
 
@@ -154,63 +161,80 @@ Recommended Page setup, taken straight from [cssTips](//github.com/typestyle/css
 `additionalStyle` any additional global style you want to apply (e.g, fonts)
 
 ```js
-var { setupPage } = createStyle();
+const { setupPage } = createStyle();
 setupPage('root',{fontSize:'10px'})
 ```
 
 ### normalize
 
-`(prefix?:string) => true`
+```typescript
+(prefix?:string) => true
+```
 
 Adds the rules from the [normalize](https://github.com/necolas/normalize.css) stylesheet
-Optionally, you may include a prefix to namespace all the adjustements
+Optionally, you may include a prefix to namespace all the adjustments
 
 ```js
-var { normalize } = createStyle();
+const { normalize } = createStyle();
 normalize('root')
 ```
 
 ### prepare
 
-`(selector: string, style?: {}) => true`
-
-Just a shortcut to run `setupPage` and `normalize`
-
-### mount(createElement,render) => (ReactElement,root_id,style_id)
-
-Mounts a react app and their styles
-
-```js
-// provided the App is to be in an element <div id='root'/>
-// and the styles in a style element <style id='styles'/>
-const { mount } = createStyle()
-mount(React.createElement,ReactDOM.render)(App,'root','styles')
+```typescript
+(selector: string, style?: {}) => true
 ```
 
-### makeComponent
-
-`createElement:Fn => tagName:string => style:object => Component`
-
-Very simple styled component kinda thing.
-
-```js 
-const {makeComponent:setupMakeComponent} = createTypeStyle()
-const makeComponent = setupMakeComponent(React.createElement)
-const El = makeComponent('div')({color:'red'})
-// use it:
-<El>some text</El>
-```
+Just a shortcut to run both `setupPage` and `normalize`
 
 ### googleFont
 
-`(font:string) => true`
+```typescript
+(font:string) => true
+```
 
-adds an @import rule for a specified google font
+adds an `@import` rule for a specified google font
 
 ```js
 const { googleFont } = createStyle();
 googleFont('Montserrat:600|Lora:400');
 ``` 
+
+### mount
+
+```typescript
+(render) => (ReactElement,root_id,style_id) => true
+```
+
+Mounts a react app and their styles
+
+```js
+import React from 'react';
+import ReactDOM from  'react-dom';
+// provided the App is to be in an element <div id='root'/>
+// and the styles in a style element <style id='styles'/>
+// You must pass a `React.createElement`-compatible function to `createStyle`
+const { mount } = createStyle(React.createElement);
+mount(ReactDOM.render)(App,'root','styles');
+```
+
+### makeComponent
+
+```typescript
+(createElement:Function) => (tagName:string) => (style:object) => Component
+```
+
+Very simple styled component kinda thing.
+
+```js 
+import React from 'react'
+// must pass a React.createElement-compatible function
+const {makeComponent} = createTypeStyle(React.createElement)
+const Div = makeComponent('div')
+const El = Div({color:'red'})
+// use it:
+<El>some text</El>
+```
 
 ## License
 

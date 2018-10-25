@@ -4,14 +4,11 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { createTypeStyle, px, deg, em } from '../createTypeStyle'
 
-const { style, keyframes, makeComponent:setupMakeComponent, mount:setupMount } = createTypeStyle()
+const { style, keyframes, makeComponent, setupMount } = createTypeStyle(React.createElement)
 
-export { style }
+export { style, makeComponent }
 
-export const mount = setupMount(React.createElement,ReactDOM.render)
-
-export const makeComponent = setupMakeComponent(React.createElement)
-
+export const mount = setupMount(ReactDOM.render)
 
 export const appClassName = style({
   textAlign: `center`

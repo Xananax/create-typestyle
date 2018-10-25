@@ -2,7 +2,7 @@
  * adds an @import rule for a specified google font
  * 
  * ```js
- * const { cssRaw } = createStyle();
+ * const { cssRaw } = createTypeStyle();
  * googleFont( cssRaw )('Montserrat:600|Lora:400');
  * ```
  * 
