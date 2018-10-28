@@ -1,6 +1,6 @@
 {
   "name": "create-typestyle",
-  "version": "1.0.42",
+  "version": "1.0.42.1",
   "description": "creates a boxed, independent instance of typestyle",
   "license": "MIT",
   "main": "./dist/main.js",
