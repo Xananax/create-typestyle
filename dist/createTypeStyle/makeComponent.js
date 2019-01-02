@@ -62,7 +62,7 @@ exports.makeComponent = function (createElement, style) {
                         var potentialChildren = props.children, additionalClassName = props.className, restProps = __rest(props, ["children", "className"]);
                         var className = additionalClassName ? typestyle_1.classes(_className, additionalClassName) : _className;
                         var finalProps = __assign({}, restProps, { className: className });
-                        var children = potentialChildren || null;
+                        var children = potentialChildren ? potentialChildren.length ? potentialChildren : [potentialChildren] : [];
                         return createElement.apply(void 0, [tagName, finalProps].concat(children));
                     };
                     if (exports.isDev && $debugName) {

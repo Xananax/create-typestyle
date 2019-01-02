@@ -1,5 +1,4 @@
 import { ElementCreator } from './types'
-export { ElementCreator }
 import { types } from 'typestyle'
 export { types }
 import { createTypeStyle as _createTypeStyle } from 'typestyle'

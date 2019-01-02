@@ -63,7 +63,7 @@ export const makeComponent =
           { ...restProps
           , className
           }
-        ; const children = potentialChildren || null
+        ; const children = potentialChildren ? potentialChildren.length ? potentialChildren : [potentialChildren] : []
         ; return createElement( tagName, finalProps, ...children )
         }
       ; if ( isDev && $debugName )

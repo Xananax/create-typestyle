@@ -1,6 +1,5 @@
 /// <reference types="react" />
 import { ElementCreator } from './types';
-export { ElementCreator };
 import { types } from 'typestyle';
 export { types };
 export * from 'csx';
