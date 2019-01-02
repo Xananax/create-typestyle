@@ -5,11 +5,11 @@
   "license": "MIT",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
-  "homepage": "https://github.com/Xananax/create-typestyle/",
-  "author": "xananax@yelostudio.com",
+  "homepage": "https://gitlab.com/xananax-npm/create-typestyle.git",
+  "author": "me@xananax.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Xananax/create-typestyle/"
+    "url": "git+https://gitlab.com/xananax-npm/create-typestyle"
   },
   "bugs": {
     "url": "https://github.com/Xananax/create-typestyle/issues"
